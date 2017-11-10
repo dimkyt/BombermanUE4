@@ -8,11 +8,17 @@
 // Sets default values
 ABomb::ABomb()
   : BombDelay(3.0f),
-    BlastRadius(200.0f)
+    BlastRadius(200.0f),
+    BlastRadiusDefault(200.0f)
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+}
+
+void ABomb::initialize(float BlastMultiplier)
+{
+  BlastRadius = BlastMultiplier*BlastRadiusDefault;
 }
 
 // Called when the game starts or when spawned

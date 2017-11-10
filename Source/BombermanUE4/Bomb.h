@@ -15,6 +15,10 @@ public:
 	// Sets default values for this actor's properties
 	ABomb();
 
+  // Initialize additional properties
+  UFUNCTION(BlueprintCallable)
+  void initialize(float BlastMultiplier);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -36,5 +40,7 @@ protected:
   // Radius of explosion
   UPROPERTY(EditAnywhere, BlueprintReadWrite)
   float BlastRadius;
+
+  float BlastRadiusDefault;
 	
 };

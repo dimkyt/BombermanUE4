@@ -31,6 +31,10 @@ public:
   UFUNCTION(BlueprintCallable, Category = "Bombs")
   void BombDestroyed();
 
+  // Increases blast radius multiplier
+  UFUNCTION(BlueprintCallable, Category = "Bombs")
+  void IncreaseBlastRadius(float Increment);
+
   // Increases the speed multiplier
   UFUNCTION(BlueprintCallable, Category = "Player")
   void IncreaseSpeed(float Increment);
@@ -44,6 +48,10 @@ protected:
   // Number of currently available bombs
   UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bombs")
   int32 AvailableBombs;
+
+  // Bomb blast radius multiplier
+  UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bombs")
+  float BlastMultiplier;
 
   // Speed mulltiplier
   UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
