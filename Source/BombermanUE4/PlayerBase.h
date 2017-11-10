@@ -43,17 +43,32 @@ public:
   UFUNCTION(BlueprintCallable, Category = "Player")
   void IncreaseMaxBombs(int Increment);
 
+  // Setup properties for remote detonator
+  UFUNCTION(BlueprintCallable, Category = "Player")
+  void DetonatorPicked();
+
+  // Restore properties to normal
+  UFUNCTION(BlueprintCallable, Category = "Player")
+  void DetonatorExpired();
+
 protected:
 
   // Number of currently available bombs
   UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bombs")
   int32 AvailableBombs;
 
+  // Max number of bombs that can be carried
+  int32 MaxBombs;
+
+  // True if the remote detonator has been picked up
+  UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bombs")
+  bool HasDetonator;
+
   // Bomb blast radius multiplier
   UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bombs")
   float BlastMultiplier;
 
-  // Speed mulltiplier
+  // Speed multiplier
   UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
   float SpeedMultiplier;
 };  

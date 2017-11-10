@@ -17,7 +17,7 @@ public:
 
   // Initialize additional properties
   UFUNCTION(BlueprintCallable)
-  void initialize(float BlastMultiplier);
+  void initialize(float BlastMultiplier, bool Remote);
 
 protected:
 	// Called when the game starts or when spawned
@@ -42,5 +42,9 @@ protected:
   float BlastRadius;
 
   float BlastRadiusDefault;
+
+  // True if it must be remotely detonated
+  UPROPERTY(EditAnywhere, BlueprintReadWrite)
+  bool IsRemote;
 	
 };

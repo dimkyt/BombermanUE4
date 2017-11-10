@@ -6,6 +6,8 @@
 // Sets default values
 APlayerBase::APlayerBase()
   : AvailableBombs(1),
+    MaxBombs(1),
+    HasDetonator(false),
     SpeedMultiplier(1.0f),
     BlastMultiplier(1.0f)
 {
@@ -41,7 +43,14 @@ bool APlayerBase::SpawnBomb()
 
 void APlayerBase::BombDestroyed()
 {
-  ++AvailableBombs;
+  if (!HasDetonator && AvailableBombs<MaxBombs)
+  {
+    ++AvailableBombs;
+  }
+  else
+  {
+    AvailableBombs = 1;
+  }
 }
 
 void APlayerBase::IncreaseBlastRadius(float Increment)
@@ -56,6 +65,22 @@ void APlayerBase::IncreaseSpeed(float Increment)
 
 void APlayerBase::IncreaseMaxBombs(int Increment)
 {
-  AvailableBombs += Increment;
+  if (!HasDetonator)
+  {
+    AvailableBombs += Increment;
+  }
+  MaxBombs += Increment;
+}
+
+void APlayerBase::DetonatorPicked()
+{
+  HasDetonator = true;
+  AvailableBombs = 1;
+}
+
+void APlayerBase::DetonatorExpired()
+{
+  HasDetonator = false;
+  AvailableBombs = MaxBombs;
 }
 

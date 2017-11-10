@@ -9,16 +9,18 @@
 ABomb::ABomb()
   : BombDelay(3.0f),
     BlastRadius(200.0f),
-    BlastRadiusDefault(200.0f)
+    BlastRadiusDefault(200.0f),
+    IsRemote(false)
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 }
 
-void ABomb::initialize(float BlastMultiplier)
+void ABomb::initialize(float BlastMultiplier, bool Remote)
 {
   BlastRadius = BlastMultiplier*BlastRadiusDefault;
+  IsRemote = Remote;
 }
 
 // Called when the game starts or when spawned
