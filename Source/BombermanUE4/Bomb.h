@@ -23,29 +23,18 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-  // Returns the endpoint of the blast in the up direction
+  // Returns the endpoint of the blast.
+  // The direction must one of the cardinal axis (i.e. (-1, 0,0)).
   UFUNCTION(BlueprintPure)
-  FVector UpBlastEndpoint(FVector Start);
-
-  // Returns the endpoint of the blast in the down direction
-  UFUNCTION(BlueprintPure)
-  FVector DownBlastEndpoint(FVector Start);
-
-  // Returns the endpoint of the blast in the right direction
-  UFUNCTION(BlueprintPure)
-  FVector RightBlastEndpoint(FVector Start);
-
-  // Returns the endpoint of the blast in the left direction
-  UFUNCTION(BlueprintPure)
-  FVector LeftBlastEndpoint(FVector Start);
+  FVector BlastEndpoint(FVector Start, FVector direction);
 
 protected:
   // Time to bomb explosion
   UPROPERTY(EditAnywhere, BlueprintReadWrite)
-  float BombDelay = 3.0f;
+  float BombDelay;
 
   // Radius of explosion
   UPROPERTY(EditAnywhere, BlueprintReadWrite)
-  float BlastRadius = 200.0f;
+  float BlastRadius;
 	
 };

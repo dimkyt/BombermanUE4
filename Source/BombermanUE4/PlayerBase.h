@@ -30,9 +30,9 @@ public:
 protected:
   // Max number of bombs that can be spawned at the same time 
   UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bombs")
-  int32 MaxBombs = 1;
+  int32 MaxBombs;
 	
   // Number of currently spawned bombs
   UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bombs")
-  int32 ActiveBombs = 0;
+  int32 ActiveBombs;
 };  

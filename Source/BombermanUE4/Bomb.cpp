@@ -7,6 +7,8 @@
 
 // Sets default values
 ABomb::ABomb()
+  : BombDelay(3.0f),
+    BlastRadius(200.0f)
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -27,23 +29,8 @@ void ABomb::Tick(float DeltaTime)
 
 }
 
-FVector ABomb::UpBlastEndpoint(FVector Start)
+FVector ABomb::BlastEndpoint(FVector Start, FVector direction)
 {
-  return FVector(Start.X + BlastRadius, Start.Y, Start.Z);
-}
-
-FVector ABomb::DownBlastEndpoint(FVector Start)
-{
-  return FVector(Start.X - BlastRadius, Start.Y, Start.Z);
-}
-
-FVector ABomb::RightBlastEndpoint(FVector Start)
-{
-  return FVector(Start.X, Start.Y + BlastRadius, Start.Z);
-}
-
-FVector ABomb::LeftBlastEndpoint(FVector Start)
-{
-  return FVector(Start.X, Start.Y - BlastRadius, Start.Z);
+  return Start + direction*BlastRadius;
 }
 
