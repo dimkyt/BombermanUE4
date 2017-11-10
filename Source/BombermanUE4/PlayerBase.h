@@ -23,16 +23,29 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-  // Returns true if a bomb can be spawned and increments the active bomb counter;
+  // Returns true if a bomb can be spawned and decreases available bombs
   UFUNCTION(BlueprintCallable, Category = "Bombs")
   bool SpawnBomb();
 
+  // Increases available bombs
+  UFUNCTION(BlueprintCallable, Category = "Bombs")
+  void BombDestroyed();
+
+  // Increases the speed multiplier
+  UFUNCTION(BlueprintCallable, Category = "Player")
+  void IncreaseSpeed(float Increment);
+
+  // Increases the number of bombs that can be active at the same time
+  UFUNCTION(BlueprintCallable, Category = "Player")
+  void IncreaseMaxBombs(int Increment);
+
 protected:
-  // Max number of bombs that can be spawned at the same time 
+
+  // Number of currently available bombs
   UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bombs")
-  int32 MaxBombs;
-	
-  // Number of currently spawned bombs
-  UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bombs")
-  int32 ActiveBombs;
+  int32 AvailableBombs;
+
+  // Speed mulltiplier
+  UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
+  float SpeedMultiplier;
 };  

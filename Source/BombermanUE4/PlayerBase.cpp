@@ -5,8 +5,8 @@
 
 // Sets default values
 APlayerBase::APlayerBase()
-  : MaxBombs(1),
-    ActiveBombs(0)
+  : AvailableBombs(1),
+    SpeedMultiplier(1.0f)
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -29,12 +29,27 @@ void APlayerBase::Tick(float DeltaTime)
 
 bool APlayerBase::SpawnBomb()
 {
-  if (ActiveBombs < MaxBombs)
+  if (AvailableBombs > 0)
   {
-    ++ActiveBombs;
+    --AvailableBombs;
     return true;
   }
 
   return false;
+}
+
+void APlayerBase::BombDestroyed()
+{
+  ++AvailableBombs;
+}
+
+void APlayerBase::IncreaseSpeed(float Increment)
+{
+  SpeedMultiplier += Increment;
+}
+
+void APlayerBase::IncreaseMaxBombs(int Increment)
+{
+  AvailableBombs += Increment;
 }
 
