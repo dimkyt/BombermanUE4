@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "Bomb.generated.h"
 
+class APlayerBase;
+
 UCLASS()
 class BOMBERMANUE4_API ABomb : public AActor
 {
@@ -17,7 +19,7 @@ public:
 
   // Initialize additional properties
   UFUNCTION(BlueprintCallable)
-  void initialize(float BlastMultiplier, bool Remote);
+  void initialize(APlayerBase* Spawner, float BlastMultiplier, bool Remote);
 
 protected:
 	// Called when the game starts or when spawned
@@ -46,5 +48,9 @@ protected:
   // True if it must be remotely detonated
   UPROPERTY(EditAnywhere, BlueprintReadWrite)
   bool IsRemote;
+
+  // Player that spawned the bomb
+  UPROPERTY(BlueprintReadOnly)
+  APlayerBase* SpawnedBy;
 	
 };

@@ -3,6 +3,7 @@
 #include "Bomb.h"
 
 #include "EngineUtils.h"
+#include "PlayerBase.h"
 
 
 // Sets default values
@@ -10,15 +11,17 @@ ABomb::ABomb()
   : BombDelay(3.0f),
     BlastRadius(140.0f),
     BlastRadiusDefault(BlastRadius),
-    IsRemote(false)
+    IsRemote(false),
+    SpawnedBy(nullptr)
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 }
 
-void ABomb::initialize(float BlastMultiplier, bool Remote)
+void ABomb::initialize(APlayerBase* Spawner, float BlastMultiplier, bool Remote)
 {
+  SpawnedBy = Spawner;
   BlastRadius = BlastMultiplier*BlastRadiusDefault;
   IsRemote = Remote;
 }
