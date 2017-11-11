@@ -11,6 +11,5 @@ I have worked on the project for about 10-15 hours, plus a few hours of tutorial
 TODO:
 - Procedurally generated map
 - Panning camera
-- Enemy NPCs
 - Maybe some text on picking up a powerUp
 - Better bomb blast effect
