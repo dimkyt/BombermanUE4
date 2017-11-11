@@ -8,8 +8,9 @@ APlayerBase::APlayerBase()
   : AvailableBombs(1),
     MaxBombs(AvailableBombs),
     HasDetonator(false),
-    SpeedMultiplier(1.0f),
-    BlastMultiplier(1.0f)
+    BlastMultiplier(1.0f),
+    Speed(5000.0f),
+    SpeedMultiplier(1.0f)
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;

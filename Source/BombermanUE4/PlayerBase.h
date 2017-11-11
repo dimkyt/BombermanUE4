@@ -68,6 +68,10 @@ protected:
   UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bombs")
   float BlastMultiplier;
 
+  // Speed
+  UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
+  float Speed;
+
   // Speed multiplier
   UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
   float SpeedMultiplier;
