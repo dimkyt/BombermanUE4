@@ -6,7 +6,7 @@
 // Sets default values
 APlayerBase::APlayerBase()
   : AvailableBombs(1),
-    MaxBombs(1),
+    MaxBombs(AvailableBombs),
     HasDetonator(false),
     SpeedMultiplier(1.0f),
     BlastMultiplier(1.0f)
@@ -47,7 +47,7 @@ void APlayerBase::BombDestroyed()
   {
     ++AvailableBombs;
   }
-  else
+  else if (HasDetonator)
   {
     AvailableBombs = 1;
   }

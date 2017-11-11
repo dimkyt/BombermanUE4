@@ -8,8 +8,8 @@
 // Sets default values
 ABomb::ABomb()
   : BombDelay(3.0f),
-    BlastRadius(200.0f),
-    BlastRadiusDefault(200.0f),
+    BlastRadius(140.0f),
+    BlastRadiusDefault(BlastRadius),
     IsRemote(false)
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
