@@ -23,10 +23,6 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-  // Returns true if a bomb can be spawned and decreases available bombs
-  UFUNCTION(BlueprintCallable, Category = "Bombs")
-  bool SpawnBomb();
-
   // Increases available bombs
   UFUNCTION(BlueprintCallable, Category = "Bombs")
   void BombDestroyed();
@@ -52,6 +48,14 @@ public:
   void DetonatorExpired();
 
 protected:
+
+  // Returns true if a bomb can be spawned and decreases available bombs
+  UFUNCTION(BlueprintCallable, Category = "Bombs")
+  bool SpawnBomb();
+
+  // Calculate force vector. Used for movement.
+  UFUNCTION(BlueprintPure, Category = "Player")
+  FVector CalculateInputForce(float InputX, float InputY);
 
   // Number of currently available bombs
   UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bombs")

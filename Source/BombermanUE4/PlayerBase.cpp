@@ -85,3 +85,8 @@ void APlayerBase::DetonatorExpired()
   AvailableBombs = MaxBombs;
 }
 
+FVector APlayerBase::CalculateInputForce(float InputX, float InputY)
+{
+  return FVector(Speed*InputX, Speed*InputY, 0.0f)*SpeedMultiplier;
+}
+
