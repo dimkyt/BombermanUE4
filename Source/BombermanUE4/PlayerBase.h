@@ -25,7 +25,7 @@ public:
 
   // Increases available bombs
   UFUNCTION(BlueprintCallable, Category = "Bombs")
-  void BombDestroyed();
+  void BombDestroyed(bool IsRemoteBomb);
 
   // Increases blast radius multiplier
   UFUNCTION(BlueprintCallable, Category = "Bombs")
@@ -61,8 +61,9 @@ protected:
   UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bombs")
   int32 AvailableBombs;
 
-  // Max number of bombs that can be carried
-  int32 MaxBombs;
+  // Number of currently available bombs that can be remotely detonated
+  UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bombs")
+  int32 AvailableRemoteBombs;
 
   // True if the remote detonator has been picked up
   UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bombs")

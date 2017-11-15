@@ -6,7 +6,7 @@
 // Sets default values
 APlayerBase::APlayerBase()
   : AvailableBombs(1),
-    MaxBombs(AvailableBombs),
+    AvailableRemoteBombs(1),
     HasDetonator(false),
     BlastMultiplier(1.0f),
     Speed(5000.0f),
@@ -33,24 +33,29 @@ void APlayerBase::Tick(float DeltaTime)
 
 bool APlayerBase::SpawnBomb()
 {
-  if (AvailableBombs > 0)
+  if (!HasDetonator && AvailableBombs > 0)
   {
     --AvailableBombs;
+    return true;
+  }
+  else if (HasDetonator && AvailableRemoteBombs > 0)
+  {
+    --AvailableRemoteBombs;
     return true;
   }
 
   return false;
 }
 
-void APlayerBase::BombDestroyed()
+void APlayerBase::BombDestroyed(bool IsRemoteBomb)
 {
-  if (!HasDetonator && AvailableBombs<MaxBombs)
+  if (!IsRemoteBomb)
   {
     ++AvailableBombs;
   }
-  else if (HasDetonator)
+  else
   {
-    AvailableBombs = 1;
+    ++AvailableRemoteBombs;
   }
 }
 
@@ -66,23 +71,17 @@ void APlayerBase::IncreaseSpeed(float Increment)
 
 void APlayerBase::IncreaseMaxBombs(int Increment)
 {
-  if (!HasDetonator)
-  {
-    AvailableBombs += Increment;
-  }
-  MaxBombs += Increment;
+  AvailableBombs += Increment;
 }
 
 void APlayerBase::DetonatorPicked()
 {
   HasDetonator = true;
-  AvailableBombs = 1;
 }
 
 void APlayerBase::DetonatorExpired()
 {
   HasDetonator = false;
-  AvailableBombs = MaxBombs;
 }
 
 FVector APlayerBase::CalculateInputForce(float InputX, float InputY)
