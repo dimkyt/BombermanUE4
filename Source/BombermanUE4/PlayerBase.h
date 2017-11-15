@@ -80,4 +80,8 @@ protected:
   // Speed multiplier
   UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
   float SpeedMultiplier;
+
+  // Duration of the Remote Detonator PowerUp
+  UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
+  float RemoteDetonatorDuration;
 };  

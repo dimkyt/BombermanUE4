@@ -10,7 +10,8 @@ APlayerBase::APlayerBase()
     HasDetonator(false),
     BlastMultiplier(1.0f),
     Speed(5000.0f),
-    SpeedMultiplier(1.0f)
+    SpeedMultiplier(1.0f),
+    RemoteDetonatorDuration(10.0f)
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -77,6 +78,7 @@ void APlayerBase::IncreaseMaxBombs(int Increment)
 void APlayerBase::DetonatorPicked()
 {
   HasDetonator = true;
+  RemoteDetonatorDuration = 10.0f;
 }
 
 void APlayerBase::DetonatorExpired()
